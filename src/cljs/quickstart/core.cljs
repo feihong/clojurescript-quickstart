@@ -2,4 +2,4 @@
 
 (enable-console-print!)
 
-(println "你好世界！")
+(println "你好世界！numb")

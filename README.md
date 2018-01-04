@@ -15,6 +15,7 @@ export BOOT_CLOJURE_VERSION='1.9.0'
 
 ## References
 
+- [Modern Cljs](https://github.com/magomimmo/modern-cljs/tree/master/doc/second-edition)
 - [Boot](https://github.com/boot-clj/boot)
 - [Clojars](https://clojars.org/)
 - [Configuring Boot](https://github.com/boot-clj/boot/wiki/Configuring-Boot)
