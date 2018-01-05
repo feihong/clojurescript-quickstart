@@ -8,10 +8,17 @@
         ordinal (-> (- end start)
                     (inc)
                     (rand-int)
-                    (+ start))]
-    (str (char ordinal))))
+                    (+ start))
+        hanzi (str (char ordinal))]
+    (println "Random hanzi" hanzi)
+    hanzi))
 
-(let [mesg (random-hanzi)
-      el (js/document.querySelector "#message")]
-  (println "Random hanzi" mesg)
-  (aset el "textContent" mesg))
+(defn set-hanzi []
+  (let [hanzi (random-hanzi)
+        el (js/document.getElementById "hanzi")]
+    (set! (.-textContent el) hanzi)))
+
+(let [btn (js/document.getElementById "generate-btn")]
+  (set! (.-onclick btn) set-hanzi))
+
+(set-hanzi)
