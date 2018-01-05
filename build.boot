@@ -15,3 +15,14 @@
          '[pandeiro.boot-http :refer [serve]]
          '[adzerk.boot-reload :refer [reload]]
          '[adzerk.boot-cljs-repl :refer [cljs-repl start-repl]])
+
+(deftask dev
+  "Launch immediate feedback development environment"
+  []
+  (comp
+    (serve :dir "target" :port 8000)
+    (watch)
+    (reload)
+    (cljs-repl)
+    (cljs)
+    (target :dir #{"target"})))
