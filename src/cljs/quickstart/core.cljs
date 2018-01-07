@@ -1,4 +1,5 @@
-(ns quickstart.core)
+(ns quickstart.core
+  (:require [quickstart.hanzi]))
 
 (defn set-text [elem-id text]
   (let [el (js/document.getElementById elem-id)]
@@ -8,19 +9,6 @@
   (let [el (js/document.getElementById btn-id)]
     (set! (.-onclick el) func)))
 
-(defn random-hanzi []
-  (let [start 0x4e00
-        end 0x9fff
-        ordinal (-> (- end start)
-                    (inc)
-                    (rand-int)
-                    (+ start))
-        hanzi (str (char ordinal))]
-    (println "Random hanzi" hanzi)
-    hanzi))
-
-(defn set-hanzi []
-  (set-text "hanzi" (random-hanzi)))
 
 (def shortnames (-> (.-shortnames js/emojione)
                     (clojure.string/split "|")))
@@ -46,10 +34,9 @@
 ;; Initialization
 (enable-console-print!)
 
-(on-click "hanzi-btn" set-hanzi)
 (on-click "emoji-btn" set-emoji)
-
-(set-hanzi)
 (set-emoji)
+
+(quickstart.hanzi/render)
 
 (set! (.-imagePathPNG js/emojione) "https://cdn.jsdelivr.net/emojione/assets/3.1/png/128/")

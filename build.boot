@@ -9,7 +9,8 @@
                   [adzerk/boot-reload "0.5.2"]
                   [adzerk/boot-cljs-repl "0.3.3"]
                   [com.cemerick/piggieback "0.2.1"]
-                  [weasel "0.7.0"]])
+                  [weasel "0.7.0"]
+                  [reagent "0.7.0"]])
 
 (require '[adzerk.boot-cljs :refer [cljs]]
          '[pandeiro.boot-http :refer [serve]]
