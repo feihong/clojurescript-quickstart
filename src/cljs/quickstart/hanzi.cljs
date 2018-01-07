@@ -1,5 +1,5 @@
 (ns quickstart.hanzi
-  (:require [reagent.core :as reagent]))
+  (:require [reagent.core :as rc]))
 
 
 (defn random-hanzi []
@@ -14,14 +14,26 @@
     hanzi))
 
 
+(def state (rc/atom {:current (random-hanzi)
+                      :history []}))
+
+
+(defn handle-generate []
+  (let [old-hanzi (:current @state)
+        new-hanzi (random-hanzi)
+        new-history (conj (:history @state) old-hanzi)]
+    (swap! state assoc :current new-hanzi :history new-history)))
+
+
 (defn component []
-  (let [hanzi (reagent/atom (random-hanzi))]
-    [:div "Random Hanzi: "
-     [:span {:class "hanzi"} @hanzi]
-     [:div
-      [:button {:class "btn btn-primary"
-                :on-click #(reset! hanzi (random-hanzi))} "Generate"]]]))
+  [:div "Random Hanzi: "
+   [:span {:class "hanzi"} (:current @state)]
+   [:div
+    [:button {:class "btn btn-primary"
+              :on-click handle-generate} "Generate"]]
+   [:div "History: "
+     [:span (clojure.string/join "  " (:history @state))]]])
 
 
 (defn render []
-  (reagent/render [component] (js/document.getElementById "hanzi-component")))
+  (rc/render [component] (js/document.getElementById "hanzi-component")))
