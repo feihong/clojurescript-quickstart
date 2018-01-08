@@ -1,5 +1,5 @@
 (ns quickstart.hanzi
-  (:require [reagent.core :as rc]))
+  (:require [reagent.core :as r]))
 
 
 (defn random-hanzi []
@@ -14,8 +14,8 @@
     hanzi))
 
 
-(def state (rc/atom {:current (random-hanzi)
-                      :history []}))
+(def state (r/atom {:current (random-hanzi)
+                    :history []}))
 
 
 (defn handle-generate []
@@ -37,4 +37,4 @@
 
 
 (defn render []
-  (rc/render [component] (js/document.getElementById "hanzi-component")))
+  (r/render [component] (js/document.getElementById "hanzi-component")))
