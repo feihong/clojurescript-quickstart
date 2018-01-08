@@ -1,5 +1,6 @@
 (ns quickstart.core
-  (:require [quickstart.hanzi]))
+  (:require [quickstart.hanzi]
+            [quickstart.emoji]))
 
 (defn set-text [elem-id text]
   (let [el (js/document.getElementById elem-id)]
@@ -34,9 +35,8 @@
 ;; Initialization
 (enable-console-print!)
 
-(on-click "emoji-btn" set-emoji)
-(set-emoji)
+; (on-click "emoji-btn" set-emoji)
+; (set-emoji)
 
 (quickstart.hanzi/render)
-
-(set! (.-imagePathPNG js/emojione) "https://cdn.jsdelivr.net/emojione/assets/3.1/png/128/")
+(quickstart.emoji/render)

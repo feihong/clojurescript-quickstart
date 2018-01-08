@@ -30,9 +30,10 @@
    [:span {:class "hanzi"} (:current @state)]
    [:div
     [:button {:class "btn btn-primary"
-              :on-click handle-generate} "Generate"]]
+              :on-click handle-generate}
+             "Generate"]]
    [:div "History: "
-     [:span (clojure.string/join "  " (:history @state))]]])
+     [:span (clojure.string/join " " (:history @state))]]])
 
 
 (defn render []

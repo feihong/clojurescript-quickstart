@@ -9,8 +9,11 @@
     .hanzi {
       font-size: 2rem;
     }
-    #emoji {
-      font-size: 3rem;
+    .emoji {
+      font-size: 3.5rem;
+    }
+    .emoji-history {
+      font-size: 2rem;
     }
   </style>
   <title>Quickstart</title>
@@ -19,13 +22,7 @@
 <body class="container">
   <div id="hanzi-component"></div>
 
-  <div>
-    Random Emoji:
-    <span id="emoji">?</span>
-    <div>
-      <button id="emoji-btn" class="btn btn-primary">Generate</button>
-    </div>
-  </div>
+  <div id="emoji-component"></div>
 
   <script src="https://cdn.jsdelivr.net/npm/emojione@3.1.2/lib/js/emojione.min.js"></script>
   <script src="js/main.js"></script>
